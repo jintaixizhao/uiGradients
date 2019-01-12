@@ -43,7 +43,6 @@ export default {
       this.copied = false;
     },
     copy() {
-      this.$ga.event('copy hex', 'click', this.gradient.name);
       this.copied = true;
       setTimeout(this.uncopy, 10);
     },

@@ -1,12 +1,5 @@
 <template>
   <main id="app">
-    <transition name="fade">
-      <template v-if="preloading">
-        <Preload />
-      </template>
-    </transition>
-
-    <Topbar />
     <Actionbar
       :gradient="currentGradient"
       :palette="showingPalette"
@@ -41,17 +34,14 @@
 </template>
 
 <script>
-import Preload from './components/Preload';
-import Topbar from './components/Topbar';
+
 import Actionbar from './components/Actionbar';
 import Display from './components/Display';
 import List from './components/List';
 import GradientModal from './components/modals/GradientModal';
 import CodeModal from './components/modals/CodeModal';
-
 import Download from './services/gradientDownloader';
 import Favicon from './services/faviconUpdater';
-
 import Gradients from '../gradients.json';
 
 export default {
@@ -59,7 +49,7 @@ export default {
   data() {
     return {
       index: {},
-      preloading: true,
+
       directionIndex: 2,
       currentDirection: 'to right',
       directions: ['to left', 'to bottom', 'to right', 'to top'],
@@ -68,14 +58,12 @@ export default {
         colors: ['#ffffff', '#ffffff'],
       },
       gradients: [],
-      showingPalette: false,
+      showingPalette: true,
       showingGradientModal: false,
       showingCodeModal: false,
     };
   },
   components: {
-    Preload,
-    Topbar,
     Display,
     Actionbar,
     List,
@@ -120,7 +108,6 @@ export default {
     },
 
     updateDirection(dir) {
-      /* eslint-disable max-len  */
       const currentIndex = this.directionIndex;
 
       if (dir === 'up') {
@@ -159,18 +146,8 @@ export default {
         this.index = randomId;
       }
     },
-
-    fadePreloader() {
-      const app = this;
-      setTimeout(() => {
-        app.preloading = false;
-      }, 2000);
-    },
-
     boot() {
       this.fetchGradients();
-      this.setCurrentGradient();
-      this.fadePreloader();
     },
   },
   watch: {

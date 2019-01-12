@@ -62,7 +62,6 @@ export default {
       this.filterGradients(false);
     },
     filterGradients(name) {
-      this.$ga.event('filter gradients', 'click', name);
       this.currentFilter = name;
     },
   },

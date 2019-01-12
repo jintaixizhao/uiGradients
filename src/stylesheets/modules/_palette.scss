@@ -3,16 +3,16 @@
 .palette {
   display: block;
   background-color: #333;
-  height: calc(100vh - 86px);
+  height: calc(100vh - 36px);
   position: absolute;
   z-index: 3;
   width: 100%;
-  top: 86px;
+  top: 36px;
   bottom: 0;
   left: 0;
   right: 0;
   padding-bottom: 8px;
-  overflow: scroll;
+  overflow-x:hidden;
   box-sizing: border-box;
   // transition: all 0.3s ease-in-out;
   backface-visibility: hidden;
@@ -20,7 +20,9 @@
   transform: translate3d(0, -100%, 0);
   will-change: transform;
   opacity: 0;
-
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
   &.active {
     transform: translate3d(0 ,0, 0);
     opacity: 1;

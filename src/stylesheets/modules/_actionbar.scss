@@ -21,12 +21,13 @@
     flex-grow: 1;
     flex-basis: 33.333%;
     margin-top: -2px; // hack to visually center align content
-
     &--swatch {
-      display: flex;
+      display: none;
       justify-content: center;
       flex-basis: 100%;
-
+      &.is-active{
+        display: flex;
+      }
     // @include respond-to(medium) {
     //   flex-basis: 33.33%;
     // }
@@ -67,6 +68,8 @@
       top: 9px;
       color: #eaeaea;
     }
+    &.single-view{display:none;}
+    &.is-active{display:list-item;}
   }
 
   &__nav-link {
@@ -91,7 +94,7 @@
     display: none;
 
     @include respond-to(medium) {
-      display: flex;
+      display: none;
     }
 
   }
